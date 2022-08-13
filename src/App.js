@@ -1,23 +1,70 @@
-import logo from './logo.svg';
+
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+import InputField  from './componants/input_field';
+import Button from './componants/Button';
+import Message from './componants/message';
+import { useState } from 'react';
+
+
+
 
 function App() {
+
+    const [height, setHeight] = useState();
+    const [weight, setWeight] = useState();
+    const [BMI, setBMI] = useState();
+
+    const onChangeHeight = (e) => setHeight(e.target.value);
+    const onChangeWeight = (e) => setWeight(e.target.value);
+
+    const checkValues = () => {
+        if(isNaN(weight)){
+            return 'Weight must be a number';
+        } else if(weight < 0){
+            return 'Weight must be more than 0';
+        } else if(weight < 20) {
+            return 'Weight too small';
+        } else if(isNaN(height)){
+            return 'Weight must be a number';
+        } else if(height < 0){
+            return 'Weight must be more than 0';
+        } else if(height < 20) {
+            return 'Weight too small';
+        }
+        return '';
+      };
+
+      const submitButton = () => {
+        const check = checkValues();
+        if (check === '') {
+          const BMIValue = (weight / (height * height)).toFixed(2);
+          setBMI(BMIValue);
+          console.log(this.state.BMI);
+        } else {
+          alert(check);
+        }
+      };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container my_form">
+        <InputField
+        inputClass='form-control my_input'
+        lableClass='my_lable'
+            placeholder='Enter your Weight'
+            value={weight}
+            lable='Weight' 
+            onChange={onChangeWeight}/>
+        <InputField 
+        inputClass='form-control my_input'
+        lableClass='my_lable'
+            placeholder='Enter your Height'
+            lable='Height'   
+            value={height}
+            onChange={onChangeHeight}/>
+            <Button text='Calculate' onClick={submitButton}/>
+            <h3 className='resulte'>Your BMI resulte is : {BMI}</h3>
+            <h1 className='resulte'>Your guides:</h1>
+            <Message myClass='info'/>
     </div>
   );
 }
