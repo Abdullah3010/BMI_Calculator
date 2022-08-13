@@ -26,12 +26,10 @@ function App() {
         } else if(weight < 20) {
             return 'Weight too small';
         } else if(isNaN(height)){
-            return 'Weight must be a number';
+            return 'Height must be a number';
         } else if(height < 0){
-            return 'Weight must be more than 0';
-        } else if(height < 20) {
-            return 'Weight too small';
-        }
+            return 'Height must be more than 0';
+        } 
         return '';
       };
 
