@@ -29,40 +29,49 @@ function App() {
             return 'Height must be a number';
         } else if(height < 0){
             return 'Height must be more than 0';
-        } 
+        }
         return '';
       };
 
       const submitButton = () => {
         const check = checkValues();
         if (check === '') {
-          const BMIValue = (weight / (height * height)).toFixed(2);
-          setBMI(BMIValue);
-          console.log(this.state.BMI);
+            let newH = height;
+            if(height > 3){
+                newH = height/100;
+            }
+            const BMIValue = (weight / (newH * newH)).toFixed(2);
+            setBMI(BMIValue);
+            console.log(this.state.BMI);
         } else {
           alert(check);
         }
       };
   return (
-    <div className="container my_form">
-        <InputField
-        inputClass='form-control my_input'
-        lableClass='my_lable'
-            placeholder='Enter your Weight'
-            value={weight}
-            lable='Weight' 
-            onChange={onChangeWeight}/>
-        <InputField 
-        inputClass='form-control my_input'
-        lableClass='my_lable'
-            placeholder='Enter your Height'
-            lable='Height'   
-            value={height}
-            onChange={onChangeHeight}/>
-            <Button text='Calculate' onClick={submitButton}/>
-            <h3 className='resulte'>Your BMI resulte is : {BMI}</h3>
-            <h1 className='resulte'>Your guides:</h1>
-            <Message myClass='info'/>
+    <div className='container'>
+        <div className='row my_form'>
+            <div className='col-md-6'>
+                <InputField
+                inputClass='my_input'
+                lableClass='my_lable'
+                placeholder='Enter your Weight'
+                value={weight}
+                lable='Weight : ' 
+                onChange={onChangeWeight}/>
+                <InputField 
+                inputClass='my_input'
+                lableClass='my_lable'
+                placeholder='Enter your Height'
+                lable='Height : '   
+                value={height}
+                onChange={onChangeHeight}/>
+                <Button text='Calculate' onClick={submitButton}/>
+                <h3 className='resulte'>Your BMI resulte is : {BMI}</h3>
+            </div>
+            <div className='col-md-6'>
+                <Message myClass='info'/>
+            </div>
+        </div>
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import React from "react";
 
 const info = {
-  color: "#e7144c",
-  fontWeight: "bold",
+  color: "#1F4690",
+  fontWeight: "bolder",
+  fontSize: "20px",
 };
 
 

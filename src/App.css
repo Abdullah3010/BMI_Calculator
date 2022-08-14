@@ -1,32 +1,47 @@
 .my_form{
-    width: 30%;
     margin: auto;
-    padding-top: 50px;
+    padding-top: 150px;
 }
 
 .my_input{
     margin-bottom:40px;
-    padding: 5px;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    border-bottom:2px solid #e7144c;
+    padding: 10px;
+    border-left: 2px solid #03009e00;
+    border-right: 2px solid #03009e00;
+    border-top: 2px solid #03009e00;
+    border-bottom:2px solid #3AB0FF;
+    border-radius: 40px;
+    width: 300px;
+    outline:none;
+}
+
+.my_input:focus{
+    margin-bottom:40px;
+    padding: 10px;
+    border-left: 2px solid #3AB0FF;
+    border-right: 2px solid #3AB0FF;
+    border-top: 2px solid #3AB0FF;
+    border-bottom:2px solid #3AB0FF;
+    border-radius: 30px;
+    width: 300px;
     outline:none;
 }
 
 .my_lable{
-    color: #e7144c;
+    color: #1F4690;
     font-size: large;
     font-weight: bold;
 }
 
 .resulte{
     margin-top: 30px;
-    color: #e7144c;
+    color: #1F4690;
     font-size: larger;
     font-weight: bolder;
 }
 
 .info{
-    margin-left: 20px;
+    border: #3AB0FF solid 3px;
+    border-radius: 30px;
+    padding: 20px;
 }
